@@ -1,0 +1,19 @@
+{
+  "name": "imranvai",
+  "version": "1.0.0",
+  "description": "Md. Imran Khan Lincoln - Blog & Insights",
+  "private": true,
+  "scripts": {
+    "predev": "node sync-cli.js",
+    "prestart": "node sync-cli.js",
+    "build": "node sync-cli.js",
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000",
+    "preview": "npx serve . -l 3000"
+  },
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "nodemailer": "^6.9.16",
+    "serve": "^14.2.6"
+  }
+}

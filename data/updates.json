@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Real Estate Investment Masterclass",
+    "description": "A comprehensive guide series covering bank deposits vs real estate, risk analysis, and long-term wealth building strategies — coming to the blog as a multi-part deep dive.",
+    "status": "Coming Soon",
+    "icon": "book"
+  },
+  {
+    "title": "Leadership Workshop Series",
+    "description": "Interactive sessions on career growth, professional etiquette, and building a leadership mindset for young professionals in Bangladesh.",
+    "status": "In Progress",
+    "icon": "users"
+  },
+  {
+    "title": "BEC Experience Platform",
+    "description": "A new customer experience initiative at Bangladesh Executive Chamber focusing on real estate client satisfaction benchmarks.",
+    "status": "Planned",
+    "icon": "target"
+  },
+  {
+    "title": "Video Content Launch",
+    "description": "Short-form video insights on career tips, real estate analysis, and leadership advice — coming to social platforms.",
+    "status": "Coming Soon",
+    "icon": "video"
+  }
+]
