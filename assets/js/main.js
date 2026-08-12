@@ -318,4 +318,100 @@
     }
   })();
 
+  /* ---------- Expertise Interactive Tabs ---------- */
+  (function() {
+    var container = document.getElementById('expertiseInteractive');
+    if (!container) return;
+
+    var tablist = container.querySelector('.expertise-tablist');
+    var tabs = container.querySelectorAll('.expertise-tab');
+    var panels = container.querySelectorAll('.expertise-panel');
+    var accordions = container.querySelectorAll('.expertise-accordion-body');
+    if (!tabs.length) return;
+
+    var manualOverride = false;
+    
+    function switchTab(newIndex) {
+      for (var i = 0; i < tabs.length; i++) {
+        var isTarget = (i === newIndex);
+        
+        // Tab button state
+        tabs[i].setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        tabs[i].classList.toggle('is-active', isTarget);
+        
+        // Desktop panel state
+        if (panels[i]) {
+          panels[i].setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+          panels[i].classList.toggle('is-active', isTarget);
+        }
+        
+        // Mobile accordion state
+        if (accordions[i]) {
+          accordions[i].classList.toggle('is-active', isTarget);
+        }
+      }
+    }
+
+    // Click handling
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function(e) {
+        manualOverride = true;
+        var idx = parseInt(this.getAttribute('data-index'), 10);
+        switchTab(idx);
+      });
+    }
+
+    // Keyboard navigation (ARIA tabs pattern)
+    if (tablist) {
+      tablist.addEventListener('keydown', function(e) {
+        var currentTab = document.activeElement;
+        if (!currentTab || !currentTab.classList.contains('expertise-tab')) return;
+        
+        var idx = parseInt(currentTab.getAttribute('data-index'), 10);
+        var nextIdx = idx;
+        
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          nextIdx = (idx + 1) % tabs.length;
+          e.preventDefault();
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          nextIdx = (idx - 1 + tabs.length) % tabs.length;
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          nextIdx = 0;
+          e.preventDefault();
+        } else if (e.key === 'End') {
+          nextIdx = tabs.length - 1;
+          e.preventDefault();
+        }
+
+        if (nextIdx !== idx) {
+          manualOverride = true;
+          tabs[nextIdx].focus();
+          switchTab(nextIdx);
+        }
+      });
+    }
+
+    // Optional Auto-advance when scrolling into view
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        if (manualOverride) return;
+        var isVisible = entries[0].isIntersecting;
+        if (isVisible && !window.matchMedia('(max-width: 1023px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var activeIdx = 0;
+          var interval = setInterval(function() {
+            if (manualOverride) {
+              clearInterval(interval);
+              return;
+            }
+            activeIdx = (activeIdx + 1) % tabs.length;
+            switchTab(activeIdx);
+          }, 3500);
+          observer.unobserve(container);
+        }
+      }, { threshold: 0.35 });
+      observer.observe(container);
+    }
+  })();
+
 })();
