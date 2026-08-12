@@ -285,4 +285,37 @@
       countObserver.observe(countEls[j]);
     }
   })();
+
+  /* ---------- Flip Fade Text Animation ---------- */
+  (function() {
+    var containers = document.querySelectorAll('.flip-fade-container');
+    if (!containers.length) return;
+    
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return; // Keep static if animations disabled
+
+    for (var i = 0; i < containers.length; i++) {
+      var container = containers[i];
+      var words = container.querySelectorAll('.flip-word');
+      if (words.length <= 1) continue;
+
+      (function(wordsArr) {
+        var currentIndex = 0;
+        setInterval(function() {
+          var prevWord = wordsArr[currentIndex];
+          prevWord.classList.remove('active');
+          prevWord.classList.add('exit');
+          
+          currentIndex = (currentIndex + 1) % wordsArr.length;
+          var nextWord = wordsArr[currentIndex];
+          
+          nextWord.classList.remove('exit');
+          setTimeout(function() {
+            nextWord.classList.add('active');
+          }, 30);
+        }, 2800);
+      })(words);
+    }
+  })();
+
 })();

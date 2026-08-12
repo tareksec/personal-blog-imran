@@ -1,12 +1,12 @@
-﻿{
+{
   "name": "Imran Khan Lincoln — Insights on Real Estate, Leadership & Business",
   "short_name": "ImranVai",
   "description": "Insights from Md. Imran Khan Lincoln — CXO at Bangladesh Executive Chamber (BEC), 18+ years in Real Estate, on real estate, careers, HR culture, customer experience, and global affairs.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1154FF",
+  "background_color": "#FDFBF7",
+  "theme_color": "#1C2331",
   "lang": "en",
   "icons": [
     {
