@@ -1872,6 +1872,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 768px) {
+  .section-achievements { display: none !important; }
   .achieve-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .achieve-card { padding: 28px 14px; }
   .achieve-value { font-size: 1.6rem; }
