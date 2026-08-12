@@ -2,7 +2,28 @@
   command = "npm run build"
   publish = "."
 
-# Fallback to the custom 404 page for unmatched routes
+# 1. Explicitly map category clean URLs to .html files
+[[redirects]]
+  from = "/blog/category/*"
+  to = "/blog/category/:splat.html"
+  status = 200
+  force = false
+
+# 2. Explicitly map individual blog post clean URLs to .html files
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat.html"
+  status = 200
+  force = false
+
+# 3. Explicitly map top-level pages (e.g. /about -> /about.html)
+[[redirects]]
+  from = "/*"
+  to = "/:splat.html"
+  status = 200
+  force = false
+
+# 4. Fallback to the custom 404 page for unmatched routes
 [[redirects]]
   from = "/*"
   to = "/404.html"
