@@ -115,47 +115,96 @@
   </div>
 </section>
 
-<!-- Achievements / Milestones — floating cards over background image -->
-<section class="section section-achievements">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <p class="eyebrow">By the Numbers</p>
-        <h2>Proven experience, trusted insights</h2>
-      </div>
-    </div>
+<!-- ═══ COMPONENT 1: Scrolling Marquee Bar ═══ -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-content">
+      REAL ESTATE <span class="marquee-dot">•</span>
+      INVESTMENT ANALYSIS <span class="marquee-dot">•</span>
+      LEADERSHIP <span class="marquee-dot">•</span>
+      CUSTOMER EXPERIENCE <span class="marquee-dot">•</span>
+      BUSINESS STRATEGY <span class="marquee-dot">•</span>
+      HR &amp; RECRUITMENT <span class="marquee-dot">•</span>
+      PROFESSIONAL ETIQUETTE <span class="marquee-dot">•</span>
+      GLOBAL AFFAIRS <span class="marquee-dot">•</span>
+      CAREER DEVELOPMENT <span class="marquee-dot">•</span>
+      WEALTH BUILDING <span class="marquee-dot">•</span>
+    </span>
+    <span class="marquee-content" aria-hidden="true">
+      REAL ESTATE <span class="marquee-dot">•</span>
+      INVESTMENT ANALYSIS <span class="marquee-dot">•</span>
+      LEADERSHIP <span class="marquee-dot">•</span>
+      CUSTOMER EXPERIENCE <span class="marquee-dot">•</span>
+      BUSINESS STRATEGY <span class="marquee-dot">•</span>
+      HR &amp; RECRUITMENT <span class="marquee-dot">•</span>
+      PROFESSIONAL ETIQUETTE <span class="marquee-dot">•</span>
+      GLOBAL AFFAIRS <span class="marquee-dot">•</span>
+      CAREER DEVELOPMENT <span class="marquee-dot">•</span>
+      WEALTH BUILDING <span class="marquee-dot">•</span>
+    </span>
   </div>
-  <div class="achieve-bg">
-    <div class="achieve-bg-image" aria-hidden="true"></div>
-    <div class="achieve-bg-overlay" aria-hidden="true"></div>
-    <div class="container achieve-bg-container">
-      <div class="achieve-grid">
-        <div class="achieve-card reveal" data-count="18" style="--stagger:0">
-      <div class="achieve-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M8 10h.01M12 6h.01M12 10h.01M16 6h.01M16 10h.01"/></svg></div>
-      <strong class="achieve-value " data-target="18">0</strong>
-      <span class="achieve-label">Years in Real Estate</span>
-    </div>
-<div class="achieve-card reveal" data-count="26" style="--stagger:1">
-      <div class="achieve-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      <strong class="achieve-value " data-target="26">0</strong>
-      <span class="achieve-label">Published Insights</span>
-    </div>
-<div class="achieve-card reveal" data-count="5" style="--stagger:2">
-      <div class="achieve-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
-      <strong class="achieve-value text-emphasis" data-target="5">0</strong>
-      <span class="achieve-label">Topic Categories</span>
-    </div>
-<div class="achieve-card achieve-card-cxo reveal" style="--stagger:3">
-        <div class="cxo-top">
-          <div class="achieve-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-          <strong class="achieve-value">CXO</strong>
-        </div>
-        <span class="achieve-label">Leadership Role</span>
+</div>
+
+<!-- ═══ COMPONENT 2: Bio Intro (2-col) ═══ -->
+<section class="section section-bio-intro" id="bio-intro">
+  <div class="container">
+    <div class="bio-intro-grid">
+      <div class="bio-intro-left reveal" style="--stagger:0">
+        <p class="bio-intro-label">IMRAN KHAN <span class="marquee-dot">•</span> LINCOLN</p>
+        <h2 class="bio-intro-heading">Chief Experience Officer (CXO) at Bangladesh Executive Chamber</h2>
       </div>
+      <div class="bio-intro-right reveal" style="--stagger:1">
+        <p class="bio-intro-paragraph">With over 18 years of experience in Bangladesh's Real Estate industry, Md. Imran Khan Lincoln leads as Chief Experience Officer at the Bangladesh Executive Chamber (BEC). His professional thought-leadership spans investment analysis, career mentorship, business strategy, and customer experience — blending personal insight with reliable data from trusted sources.</p>
+        <p class="bio-intro-paragraph-secondary">His writing bridges Bangla and English in a professional tone, drawing from real-world scenarios and credible references including Bangladesh Bank, ADB, Reuters, and The Daily Star — offering actionable perspectives to a growing readership.</p>
+        <div class="bio-intro-meta">
+          <div class="bio-intro-meta-item">
+            <span class="bio-intro-meta-label">LOCATION</span>
+            <span class="bio-intro-meta-value">Gulshan, Dhaka</span>
+          </div>
+          <div class="bio-intro-meta-item">
+            <span class="bio-intro-meta-label">EXPERIENCE</span>
+            <span class="bio-intro-meta-value">18+ Years</span>
+          </div>
+          <div class="bio-intro-meta-item">
+            <span class="bio-intro-meta-label">FOCUS</span>
+            <span class="bio-intro-meta-value">Real Estate &amp; CX</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══ COMPONENT 3: Stats Strip ═══ -->
+<section class="section section-stats-strip" id="stats-strip">
+  <div class="container">
+    <div class="stats-strip-grid">
+      <div class="stats-strip-card stats-strip-card--light reveal" style="--stagger:0">
+        <strong class="stats-strip-number">18+</strong>
+        <span class="stats-strip-label">YEARS IN REAL ESTATE</span>
+      </div>
+      <div class="stats-strip-card stats-strip-card--dark reveal" style="--stagger:1">
+        <strong class="stats-strip-number">26</strong>
+        <span class="stats-strip-label">PUBLISHED INSIGHTS</span>
+      </div>
+      <div class="stats-strip-card stats-strip-card--light reveal" style="--stagger:2">
+        <strong class="stats-strip-number">6</strong>
+        <span class="stats-strip-label">EXPERTISE CATEGORIES</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPONENT 6: Decorative Accent ═══ -->
+<div class="bio-decorative-accent" aria-hidden="true">
+  <svg class="bio-accent-shape" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="55" stroke="var(--color-primary)" stroke-width="1" opacity="0.08"/>
+    <circle cx="60" cy="60" r="38" stroke="var(--color-primary)" stroke-width="0.8" opacity="0.06"/>
+    <circle cx="60" cy="60" r="20" stroke="var(--color-primary)" stroke-width="0.6" opacity="0.04"/>
+    <line x1="5" y1="60" x2="115" y2="60" stroke="var(--color-primary)" stroke-width="0.5" opacity="0.04"/>
+    <line x1="60" y1="5" x2="60" y2="115" stroke="var(--color-primary)" stroke-width="0.5" opacity="0.04"/>
+  </svg>
+</div>
 
 <!-- Latest Insights -->
 <section class="section section-latest" id="latest">
@@ -639,6 +688,9 @@
     </div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/animations.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

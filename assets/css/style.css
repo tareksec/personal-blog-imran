@@ -29,7 +29,14 @@
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.07);
   --container: 1200px;
   --header-h: 72px;
+  --navbar-height: 96px;
   --step-size: clamp(4px, 1vw, 8px);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 80px;
+  }
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,6 +50,10 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  padding-top: var(--navbar-height);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -441,7 +452,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   padding-top: 72px;
   padding-bottom: 72px;
-  animation: pageFadeIn 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  /* animation handled by GSAP when available, CSS fallback below */
 }
 
 .hero h1 { margin-bottom: 20px; }
@@ -2286,7 +2297,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---------- Achievements / Skills / Timeline / Connect responsive ---------- */
 
 @media (max-width: 1024px) {
-  .achieve-grid { grid-template-columns: repeat(2, 1fr); }
+  .achieve-grid { grid-template-columns: repeat(2, 273px); }
   .skill-layout { grid-template-columns: 1fr; }
   .skill-grid { grid-template-columns: repeat(2, 1fr); }
   .skill-illustration { display: none; }
@@ -2298,10 +2309,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 768px) {
-  .section-achievements { display: none !important; }
-  .achieve-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .achieve-card { padding: 28px 14px; }
-  .achieve-value { font-size: 1.6rem; }
+  .achieve-grid { grid-template-columns: repeat(1, 273px); gap: 16px; }
+  .achieve-card { height: auto; min-height: 180px; }
 
   .skill-grid { grid-template-columns: 1fr; }
   .skill-layout { gap: 0; }
@@ -2546,9 +2555,284 @@ img { max-width: 100%; height: auto; display: block; }
   .pill-site-name { font-size: 1rem; }
 }
 
+
+/* ═══════════════════════════════════════════════
+   Bio Intro Section — Marquee + Bio + Stats
+   ═══════════════════════════════════════════════ */
+
+/* --- Component 1: Scrolling Marquee Bar --- */
+
+.marquee-bar {
+  width: 100%;
+  background: var(--color-navy);
+  overflow: hidden;
+  padding: 16px 0;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  color: rgba(253, 251, 247, 0.6);
+  padding-right: 0;
+}
+
+.marquee-dot {
+  display: inline-block;
+  color: var(--color-primary);
+  margin: 0 20px;
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* --- Component 2: Bio Intro (2-column) --- */
+
+.section-bio-intro {
+  background: var(--color-bg);
+  padding: 80px 0;
+  position: relative;
+}
+
+.bio-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.bio-intro-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bio-intro-label .marquee-dot {
+  margin: 0 10px;
+  font-size: 0.6rem;
+}
+
+.bio-intro-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-heading);
+  letter-spacing: 0.01em;
+}
+
+.bio-intro-paragraph {
+  font-family: var(--font-paragraph);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.bio-intro-paragraph-secondary {
+  font-family: var(--font-paragraph);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin-bottom: 32px;
+}
+
+.bio-intro-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+}
+
+.bio-intro-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bio-intro-meta-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.bio-intro-meta-value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-heading);
+}
+
+/* --- Component 3: Stats Strip --- */
+
+.section-stats-strip {
+  padding: 0;
+  border-top: none !important;
+}
+
+.section-stats-strip + .section {
+  border-top: none;
+}
+
+.stats-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.stats-strip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stats-strip-card:hover {
+  transform: translateY(-2px);
+}
+
+.stats-strip-card--light {
+  background: var(--color-bg-alt);
+}
+
+.stats-strip-card--dark {
+  background: var(--color-navy);
+}
+
+.stats-strip-card--dark .stats-strip-number {
+  color: #fff;
+}
+
+.stats-strip-card--dark .stats-strip-label {
+  color: rgba(253, 251, 247, 0.65);
+}
+
+.stats-strip-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  line-height: 1;
+  color: var(--color-heading);
+  margin-bottom: 8px;
+}
+
+.stats-strip-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* --- Component 6: Decorative Accent --- */
+
+.bio-decorative-accent {
+  position: relative;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-accent-shape {
+  position: absolute;
+  right: 5%;
+  top: -60px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.5;
+}
+
+/* --- Bio Intro Responsive --- */
+
+@media (max-width: 900px) {
+  .bio-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-bio-intro { padding: 48px 0; }
+  .bio-intro-heading { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+  .bio-intro-meta { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .stats-strip-grid { grid-template-columns: 1fr; }
+  .stats-strip-card { padding: 32px 24px; }
+  .bio-accent-shape { width: 80px; height: 80px; top: -40px; right: 3%; }
+}
+
+@media (max-width: 480px) {
+  .section-bio-intro { padding: 32px 0; }
+  .bio-intro-paragraph { font-size: 1rem; }
+  .bio-intro-paragraph-secondary { font-size: 0.95rem; }
+  .bio-intro-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bio-intro-meta-item:last-child { grid-column: 1 / -1; }
+  .marquee-content { font-size: 0.72rem; }
+  .marquee-dot { margin: 0 14px; }
+  .marquee-bar { padding: 12px 0; }
+  .stats-strip-card { padding: 28px 20px; }
+  .bio-accent-shape { width: 60px; height: 60px; top: -30px; }
+}
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- GSAP-ready states ---------- */
+/* Applied only when animations.js successfully loads GSAP */
+
+.gsap-ready .hero-inner {
+  animation: none; /* GSAP controls hero entrance */
+}
+
+.gsap-ready .hero-visual {
+  will-change: transform;
+}
+
+/* Prevent CSS transition from competing with GSAP on reveals */
+.gsap-ready .reveal {
+  transition: none;
+}
+
+/* Fallback: if GSAP doesn't load, hero still fades in via CSS */
+.hero-inner {
+  animation: pageFadeIn 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }

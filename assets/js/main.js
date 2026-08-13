@@ -157,8 +157,10 @@
     if (href) window.open(href, '_blank', 'noopener,width=640,height=520');
   });
 
-  /* ---------- Scroll-reveal animation ---------- */
+  /* ---------- Scroll-reveal animation (CSS fallback, skipped if GSAP active) ---------- */
   (function () {
+    if (document.documentElement.classList.contains('gsap-ready')) return;
+
     var revealEls = document.querySelectorAll('.reveal');
     if (!revealEls.length) return;
 
