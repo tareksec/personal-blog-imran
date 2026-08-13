@@ -142,7 +142,7 @@ function generatePages(posts) {
       ogImage: `${base}/assets/og-default.svg`,
       activeNav: 'home',
       body: T.homePage({ posts: sorted, categories, updates: loadUpdates() }),
-      jsonLd: [T.websiteJsonLd()],
+      jsonLd: [T.websiteJsonLd(), T.personJsonLd()],
     })
   );
   console.log(`  ✓ index.html (${sorted.length} posts)`);
@@ -151,13 +151,14 @@ function generatePages(posts) {
   writeFile(
     path.join(ROOT, 'about.html'),
     T.layout({
-      title: `About — ${SITE.name}`,
-      description: `Learn about ${SITE.name}, ${SITE.role} at ${SITE.organization}, with ${SITE.experienceYears} years of experience in the Real Estate industry.`,
+      title: `About ${SITE.name} | CXO BEC & Real Estate Professional`,
+      description: `Learn about ${SITE.name}, Chief Experience Officer (CXO) at Bangladesh Executive Chamber (BEC), with ${SITE.experienceYears} years in real estate, corporate training, and leadership coaching in Dhaka.`,
       canonical: `${base}/about`,
       ogImage: `${base}/assets/og-default.svg`,
+      ogType: 'profile',
       activeNav: 'about',
       body: T.aboutPage(),
-      jsonLd: [T.personJsonLd()],
+      jsonLd: [T.personJsonLd(), T.projectJsonLd()],
     })
   );
   console.log('  ✓ about.html');
@@ -166,8 +167,8 @@ function generatePages(posts) {
   writeFile(
     path.join(ROOT, 'contact.html'),
     T.layout({
-      title: `Contact — ${SITE.name}`,
-      description: `Get in touch with ${SITE.name}. Phone: ${SITE.phones.join(', ')}. Office: ${SITE.officeAddress}.`,
+      title: `Contact ${SITE.name} | Real Estate Consultant & Corporate Trainer`,
+      description: `Contact ${SITE.name} for business consulting, real estate marketing, and career development coaching in Gulshan, Dhaka. Phone: ${SITE.phones.join(', ')}.`,
       canonical: `${base}/contact`,
       ogImage: `${base}/assets/og-default.svg`,
       activeNav: 'contact',
@@ -181,23 +182,98 @@ function generatePages(posts) {
   writeFile(
     path.join(ROOT, 'bec.html'),
     T.layout({
-      title: `Bangladesh Executive Chamber (BEC) — ${SITE.name}`,
+      title: `Bangladesh Executive Chamber (BEC) | Empowering Leadership in Bangladesh`,
       description: 'Join a premier network of C-level executives and industry pioneers in Bangladesh. Bangladesh Executive Chamber (BEC) is dedicated to professional excellence.',
       canonical: `${base}/bec`,
       ogImage: `${base}/assets/og-default.svg`,
       activeNav: 'bec',
       body: T.becPage(),
-      jsonLd: [T.websiteJsonLd()],
+      jsonLd: [T.websiteJsonLd(), T.organizationJsonLd()],
     })
   );
   console.log('  ✓ bec.html');
+
+  /* ---- Services ---- */
+  writeFile(
+    path.join(ROOT, 'services.html'),
+    T.layout({
+      title: `Services — ${SITE.name} | Consulting, Training & Coaching`,
+      description: `Professional services from ${SITE.name}: corporate training, lead generation, real estate marketing, business consulting, and career coaching in Dhaka, Bangladesh.`,
+      canonical: `${base}/services`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: 'services',
+      body: T.servicesPage(),
+      jsonLd: [T.websiteJsonLd(), T.servicesJsonLd()],
+    })
+  );
+  console.log('  ✓ services.html');
+
+  /* ---- Projects ---- */
+  writeFile(
+    path.join(ROOT, 'projects.html'),
+    T.layout({
+      title: `Projects — ${SITE.project.name} | Sea-view Hotel, Cox's Bazar`,
+      description: `${SITE.project.name}: ${SITE.project.description}`,
+      canonical: `${base}/projects`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: 'projects',
+      body: T.projectsPage(),
+      jsonLd: [T.websiteJsonLd(), T.projectJsonLd()],
+    })
+  );
+  console.log('  ✓ projects.html');
+
+  /* ---- Testimonials ---- */
+  writeFile(
+    path.join(ROOT, 'testimonials.html'),
+    T.layout({
+      title: `Testimonials — ${SITE.name}`,
+      description: `What clients and partners say about ${SITE.name} — real estate consulting, leadership coaching, and business strategy in Dhaka, Bangladesh.`,
+      canonical: `${base}/testimonials`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: 'testimonials',
+      body: T.testimonialsPage(),
+      jsonLd: [T.websiteJsonLd(), T.reviewsJsonLd()],
+    })
+  );
+  console.log('  ✓ testimonials.html');
+
+  /* ---- Privacy Policy ---- */
+  writeFile(
+    path.join(ROOT, 'privacy-policy.html'),
+    T.layout({
+      title: `Privacy Policy — ${SITE.name}`,
+      description: 'Privacy policy for the personal website of Md. Imran Khan Lincoln.',
+      canonical: `${base}/privacy-policy`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: '',
+      body: T.privacyPage(),
+      jsonLd: [T.websiteJsonLd()],
+    })
+  );
+  console.log('  ✓ privacy-policy.html');
+
+  /* ---- Terms of Service ---- */
+  writeFile(
+    path.join(ROOT, 'terms-of-service.html'),
+    T.layout({
+      title: `Terms of Service — ${SITE.name}`,
+      description: 'Terms of service for the personal website of Md. Imran Khan Lincoln.',
+      canonical: `${base}/terms-of-service`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: '',
+      body: T.termsPage(),
+      jsonLd: [T.websiteJsonLd()],
+    })
+  );
+  console.log('  ✓ terms-of-service.html');
 
   /* ---- Blog listing ---- */
   writeFile(
     path.join(ROOT, 'blog.html'),
     T.layout({
-      title: `Blog & Insights — ${SITE.name}`,
-      description: `All insights from ${SITE.name} on real estate, careers, HR culture, customer experience, and global affairs.`,
+      title: `Blog & Insights — ${SITE.name} | Leadership & Real Estate`,
+      description: `All insights from ${SITE.name} on real estate marketing, careers, ESG, HR culture, customer experience, and global affairs.`,
       canonical: `${base}/blog`,
       ogImage: `${base}/assets/og-default.svg`,
       activeNav: 'blog',
@@ -269,8 +345,13 @@ function generatePages(posts) {
     { loc: `${base}/`, priority: '1.0', freq: 'weekly' },
     { loc: `${base}/blog`, priority: '0.9', freq: 'daily' },
     { loc: `${base}/about`, priority: '0.7', freq: 'monthly' },
+    { loc: `${base}/services`, priority: '0.8', freq: 'monthly' },
+    { loc: `${base}/projects`, priority: '0.8', freq: 'monthly' },
+    { loc: `${base}/testimonials`, priority: '0.6', freq: 'monthly' },
     { loc: `${base}/contact`, priority: '0.6', freq: 'monthly' },
     { loc: `${base}/bec`, priority: '0.7', freq: 'monthly' },
+    { loc: `${base}/privacy-policy`, priority: '0.2', freq: 'yearly' },
+    { loc: `${base}/terms-of-service`, priority: '0.2', freq: 'yearly' },
     ...sorted.map((p) => ({
       loc: `${base}/blog/${p.slug}`,
       priority: '0.8',
