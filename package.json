@@ -7,9 +7,9 @@
     "predev": "node sync-cli.js",
     "prestart": "node sync-cli.js",
     "build": "node sync-cli.js",
-    "dev": "npx serve . -l 3000",
-    "start": "npx serve . -l 3000",
-    "preview": "npx serve . -l 3000"
+    "dev": "npx serve . -l 4000",
+    "start": "npx serve . -l 4000",
+    "preview": "npx serve . -l 4000"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",

@@ -21,6 +21,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://imranvai.vercel.app/bec</loc>
+        <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://imranvai.vercel.app/blog/যুদ্ধ-নয়-শান্তিই-হোক-বিশ্বের-অগ্রাধিকার</loc>
         <lastmod>2026-08-07</lastmod>
     <changefreq>monthly</changefreq>

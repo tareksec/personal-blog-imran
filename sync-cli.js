@@ -177,6 +177,21 @@ function generatePages(posts) {
   );
   console.log('  ✓ contact.html');
 
+  /* ---- BEC ---- */
+  writeFile(
+    path.join(ROOT, 'bec.html'),
+    T.layout({
+      title: `Bangladesh Executive Chamber (BEC) — ${SITE.name}`,
+      description: 'Join a premier network of C-level executives and industry pioneers in Bangladesh. Bangladesh Executive Chamber (BEC) is dedicated to professional excellence.',
+      canonical: `${base}/bec`,
+      ogImage: `${base}/assets/og-default.svg`,
+      activeNav: 'bec',
+      body: T.becPage(),
+      jsonLd: [T.websiteJsonLd()],
+    })
+  );
+  console.log('  ✓ bec.html');
+
   /* ---- Blog listing ---- */
   writeFile(
     path.join(ROOT, 'blog.html'),
@@ -255,6 +270,7 @@ function generatePages(posts) {
     { loc: `${base}/blog`, priority: '0.9', freq: 'daily' },
     { loc: `${base}/about`, priority: '0.7', freq: 'monthly' },
     { loc: `${base}/contact`, priority: '0.6', freq: 'monthly' },
+    { loc: `${base}/bec`, priority: '0.7', freq: 'monthly' },
     ...sorted.map((p) => ({
       loc: `${base}/blog/${p.slug}`,
       priority: '0.8',
