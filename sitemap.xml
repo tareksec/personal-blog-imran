@@ -51,6 +51,18 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://imranvai.vercel.app/blog/তরুণদের-উদ্যোক্তা-হওয়ার-নতুন-সুযোগ-১০-লাখ-টাকা-পর্যন্ত-জামানতবিহীন-ঋণ</loc>
+        <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imranvai.vercel.app/blog/বাংলাদেশ-কি-এবার-সত্যিই-electric-bus-যুগে-প্রবেশ-করতে-যাচ্ছে</loc>
+        <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://imranvai.vercel.app/blog/যুদ্ধ-নয়-শান্তিই-হোক-বিশ্বের-অগ্রাধিকার</loc>
         <lastmod>2026-08-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -207,17 +219,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://imranvai.vercel.app/blog/category/career-leadership</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://imranvai.vercel.app/blog/category/global-issues</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://imranvai.vercel.app/blog/category/real-estate-investment</loc>
-        <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://imranvai.vercel.app/blog/category/career-leadership</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
