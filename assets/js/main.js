@@ -416,4 +416,47 @@
     }
   })();
 
+  /* ---------- Cursor Spotlight / Tilt Effect ---------- */
+  (function initCursorCards() {
+    var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || prefersReduced) return;
+
+    var cards = document.querySelectorAll('.post-card');
+    if (!cards.length) return;
+
+    var rafId = null;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(function () {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+
+          // Update glow position
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+
+          // Calculate tilt (subtle, max ~6 deg)
+          var centerX = rect.width / 2;
+          var centerY = rect.height / 2;
+          
+          var rotateX = ((y - centerY) / centerY) * -6;
+          var rotateY = ((x - centerX) / centerX) * 6;
+
+          card.style.setProperty('--rot-x', rotateX + 'deg');
+          card.style.setProperty('--rot-y', rotateY + 'deg');
+        });
+      });
+
+      card.addEventListener('mouseleave', function () {
+        if (rafId) cancelAnimationFrame(rafId);
+        card.style.setProperty('--rot-x', '0deg');
+        card.style.setProperty('--rot-y', '0deg');
+      });
+    });
+  })();
+
 })();
