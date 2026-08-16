@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://imranvai.vercel.app/sitemap.xml
+Sitemap: https://imrankhanblog.netlify.app/sitemap.xml

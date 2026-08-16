@@ -16,7 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { normalizePost } = require('./lib/posts');
+const { normalizePost, fixImageAlts } = require('./lib/posts');
 const { SITE } = require('./lib/content');
 const T = require('./lib/templates');
 
@@ -30,6 +30,19 @@ const CATEGORY_DIR = path.join(BLOG_DIR, 'category');
 const BLOGGER_FEED = 'https://imrankhanlincoln.blogspot.com/feeds/posts/default?alt=json';
 const FETCH_TIMEOUT_MS = 20000;
 const PAGE_SIZE = 150;
+
+/**
+ * Trim a meta description to ~maxLen characters at a word boundary,
+ * appending an ellipsis when truncated. Keeps descriptions within the
+ * ~155-char limit recommended for search results.
+ */
+function truncateMeta(text, maxLen = 155) {
+  const s = String(text || '').trim();
+  if (s.length <= maxLen) return s;
+  const cut = s.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : maxLen).trim()}…`;
+}
 
 /* ------------------------------------------------------------------ */
 /* Fetching                                                            */
@@ -151,14 +164,14 @@ function generatePages(posts) {
   writeFile(
     path.join(ROOT, 'about.html'),
     T.layout({
-      title: `About ${SITE.name} | CXO BEC & Real Estate Professional`,
-      description: `Learn about ${SITE.name}, Chief Experience Officer (CXO) at Bangladesh Executive Chamber (BEC), with ${SITE.experienceYears} years in real estate, corporate training, and leadership coaching in Dhaka.`,
+      title: `About ${SITE.name} | CXO & Real Estate Professional`,
+      description: `Learn about ${SITE.name}, CXO at Bangladesh Executive Chamber (BEC), with ${SITE.experienceYears} years in real estate, corporate training, and leadership coaching.`,
       canonical: `${base}/about`,
       ogImage: `${base}/assets/og-default.svg`,
       ogType: 'profile',
       activeNav: 'about',
       body: T.aboutPage(),
-      jsonLd: [T.personJsonLd(), T.projectJsonLd()],
+      jsonLd: [T.personJsonLd()],
     })
   );
   console.log('  ✓ about.html');
@@ -272,8 +285,8 @@ function generatePages(posts) {
   writeFile(
     path.join(ROOT, 'blog.html'),
     T.layout({
-      title: `Blog & Insights — ${SITE.name} | Leadership & Real Estate`,
-      description: `All insights from ${SITE.name} on real estate marketing, careers, ESG, HR culture, customer experience, and global affairs.`,
+      title: `Blog & Insights — ${SITE.name}`,
+      description: truncateMeta(`All insights from ${SITE.name} on real estate marketing, careers, ESG, HR culture, customer experience, and global affairs.`),
       canonical: `${base}/blog`,
       ogImage: `${base}/assets/og-default.svg`,
       activeNav: 'blog',
@@ -296,7 +309,7 @@ function generatePages(posts) {
       path.join(BLOG_DIR, `${post.slug}.html`),
       T.layout({
         title: `${post.title} — ${SITE.name}`,
-        description: post.excerpt,
+        description: truncateMeta(post.excerpt),
         canonical: `${base}/blog/${post.slug}`,
         ogImage: post.image || `${base}/assets/og-default.svg`,
         ogType: 'article',
@@ -446,6 +459,9 @@ async function main() {
   }
 
   await syncToKv(posts);
+
+  // Fix in-body image alt text (applies to live AND cached builds).
+  posts = fixImageAlts(posts);
 
   const { categories, count } = generatePages(posts);
   console.log(`\nBuild complete: ${count} posts, ${categories.length} categories.`);

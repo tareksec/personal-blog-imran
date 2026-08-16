@@ -86,7 +86,7 @@ async function sendWelcomeEmail(email) {
 <p>In the meantime, explore the blog:</p>
 <a href="https://imrankhanlincoln.blogspot.com/" style="display:inline-block;padding:12px 24px;background:#1154FF;color:#fff;border-radius:6px;text-decoration:none;">Visit the Blog</a>
 <hr style="margin-top:24px;border:none;border-top:1px solid #eee;"/>
-<p style="color:#999;font-size:12px;">You received this because you subscribed at imranvai.vercel.app. If this was a mistake, you can reply to unsubscribe.</p>
+<p style="color:#999;font-size:12px;">You received this because you subscribed at imrankhanblog.netlify.app. If this was a mistake, you can reply to unsubscribe.</p>
 </div>`,
       }),
     });
