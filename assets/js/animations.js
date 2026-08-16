@@ -46,17 +46,22 @@
 
     var eyebrow = heroCopy.querySelector('.eyebrow');
     var heading = heroCopy.querySelector('h1');
-    var lead = heroCopy.querySelector('.hero-lead');
-    var actions = heroCopy.querySelector('.hero-actions');
+    var subtitle = heroCopy.querySelector('.hero-subtitle');
     var stats = heroCopy.querySelector('.hero-stats');
+    var actions = heroCopy.querySelector('.hero-actions');
+    var social = heroCopy.querySelector('.hero-social');
     var visual = document.querySelector('.hero .hero-visual');
 
     // Collect elements that exist
-    var elements = [eyebrow, heading, lead, actions, stats, visual].filter(Boolean);
+    var elements = [eyebrow, heading, subtitle, stats, actions, social, visual].filter(Boolean);
     if (!elements.length) return;
 
     // Set initial hidden state
     gsap.set(elements, { opacity: 0, y: 30 });
+
+    // Also hide floating badges for staggered reveal
+    var badges = document.querySelectorAll('.hero-badge');
+    if (badges.length) gsap.set(badges, { opacity: 0, scale: 0.8 });
 
     // Build staggered timeline
     var tl = gsap.timeline({
@@ -69,8 +74,20 @@
         opacity: 1,
         y: 0,
         duration: el === visual ? 1 : 0.8,
-      }, i * 0.18); // 0.18s stagger between elements
+      }, i * 0.15); // 0.15s stagger between elements
     });
+
+    // Animate badges in after visual appears
+    if (badges.length) {
+      badges.forEach(function (badge, i) {
+        tl.to(badge, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: 'back.out(1.7)',
+        }, '-=0.3' );
+      });
+    }
   }
 
   /* ------------------------------------------------------------------ */
