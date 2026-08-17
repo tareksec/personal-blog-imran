@@ -5,6 +5,27 @@
 (function () {
   'use strict';
 
+  /* ---------- Navbar Scroll Effect ---------- */
+  var headerWrapper = document.getElementById('site-header-wrapper');
+  if (headerWrapper) {
+    var ticking = false;
+    var onScroll = function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          if (window.scrollY > 50) {
+            headerWrapper.classList.add('navbar-scrolled');
+          } else {
+            headerWrapper.classList.remove('navbar-scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // initial check
+  }
+
   /* ---------- Mobile nav ---------- */
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -161,7 +182,7 @@
   (function () {
     if (document.documentElement.classList.contains('gsap-ready')) return;
 
-    var revealEls = document.querySelectorAll('.reveal');
+    var revealEls = document.querySelectorAll('.reveal, .expertise-item');
     if (!revealEls.length) return;
 
     if (!('IntersectionObserver' in window)) {
@@ -234,54 +255,60 @@
   }
 
   /* ---------- Counter animation (count-up) ---------- */
+  /* ---------- Counter animation (count-up) ---------- */
   (function () {
-    var countEls = document.querySelectorAll('.achieve-value[data-target]');
+    var countEls = document.querySelectorAll('.stat strong, .teaser-badge-number, .about-badge-number, .hero-badge-number');
     if (!countEls.length) return;
 
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function animateCount(el, target, duration) {
+    function animateCount(el) {
+      var text = el.textContent.trim();
+      var match = text.match(/^(\d+)(.*)$/);
+      if (!match) return; // e.g. "CXO"
+
+      var targetNum = parseInt(match[1], 10);
+      var suffix = match[2] || '';
+      var duration = 1200;
+
       if (prefersReduced) {
-        el.textContent = target % 1 === 0 ? String(target) : target.toFixed(0);
-        return;
+        return; // already has final text
       }
+
       var start = performance.now();
       var startVal = 0;
+      el.textContent = '0';
+
       function tick(now) {
         var elapsed = now - start;
         var progress = Math.min(elapsed / duration, 1);
-        // easeOutExpo for a polished deceleration
-        var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        var current = Math.round(startVal + (target - startVal) * eased);
-        el.textContent = String(current) + (target < 10 && target % 1 !== 0 ? '+' : '');
+        
+        // cubic ease-out
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(startVal + (targetNum - startVal) * eased);
+        
         if (progress < 1) {
+          el.textContent = current;
           requestAnimationFrame(tick);
         } else {
-          el.textContent = target % 1 === 0 ? String(target) : String(target);
+          el.textContent = targetNum + suffix;
         }
       }
       requestAnimationFrame(tick);
     }
 
     if (!('IntersectionObserver' in window)) {
-      for (var i = 0; i < countEls.length; i++) {
-        var el = countEls[i];
-        var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-        animateCount(el, target, 1600);
-      }
       return;
     }
 
     var countObserver = new IntersectionObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
         if (entries[i].isIntersecting) {
-          var el = entries[i].target;
-          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-          animateCount(el, target, 1600);
-          countObserver.unobserve(el);
+          animateCount(entries[i].target);
+          countObserver.unobserve(entries[i].target);
         }
       }
-    }, { threshold: 0.4 });
+    }, { threshold: 0.5 });
 
     for (var j = 0; j < countEls.length; j++) {
       countObserver.observe(countEls[j]);
@@ -458,5 +485,7 @@
       });
     });
   })();
+
+
 
 })();

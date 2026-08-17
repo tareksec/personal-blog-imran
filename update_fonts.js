@@ -3,7 +3,7 @@ const path = require('path');
 
 const dir = __dirname;
 const oldFontStr = 'family=DM+Sans:wght@400;500;700&family=Source+Sans+Pro:wght@400;600;700&family=Noto+Serif+Bengali:wght@100..900&display=swap';
-const newFontStr = 'family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+Bengali:wght@100..900&display=swap';
+const newFontStr = 'family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap';
 
 function walk(dir, done) {
   let results = [];
