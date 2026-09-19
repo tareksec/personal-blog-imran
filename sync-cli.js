@@ -23,6 +23,7 @@ const T = require('./lib/templates');
 const ROOT = __dirname;
 const DATA_DIR = path.join(ROOT, 'data');
 const POSTS_FILE = path.join(DATA_DIR, 'posts.json');
+const LOCAL_POSTS_FILE = path.join(DATA_DIR, 'local-posts.json');
 const META_FILE = path.join(DATA_DIR, 'meta.json');
 const BLOG_DIR = path.join(ROOT, 'blog');
 const CATEGORY_DIR = path.join(BLOG_DIR, 'category');
@@ -85,6 +86,18 @@ function readCachedPosts() {
   } catch {
     return [];
   }
+}
+
+function readLocalPosts() {
+  try {
+    if (fs.existsSync(LOCAL_POSTS_FILE)) {
+      const parsed = JSON.parse(fs.readFileSync(LOCAL_POSTS_FILE, 'utf8'));
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch (err) {
+    console.warn(`  ↳ Failed to read ${LOCAL_POSTS_FILE}: ${err.message}`);
+  }
+  return [];
 }
 
 function writeJson(file, data) {
@@ -446,17 +459,26 @@ async function main() {
   if (source === 'live') {
     const usedSlugs = new Set();
     posts = entries.map((e) => normalizePost(e, usedSlugs));
-    posts.sort((a, b) => new Date(b.published) - new Date(a.published));
-    writeJson(POSTS_FILE, posts);
-    writeJson(META_FILE, {
-      syncedAt: new Date().toISOString(),
-      count: posts.length,
-      source: 'blogger',
-    });
-    console.log(`Wrote data/posts.json (${posts.length} posts).`);
   } else {
     posts = entries;
   }
+
+  const localPosts = readLocalPosts();
+  if (localPosts.length) {
+    const existingSlugs = new Set(posts.map((p) => p.slug));
+    const toAdd = localPosts.filter((lp) => !existingSlugs.has(lp.slug));
+    posts = [...toAdd, ...posts];
+    console.log(`  ↳ Merged ${toAdd.length} local post(s) into site (total: ${posts.length}).`);
+  }
+
+  posts.sort((a, b) => new Date(b.published) - new Date(a.published));
+  writeJson(POSTS_FILE, posts);
+  writeJson(META_FILE, {
+    syncedAt: new Date().toISOString(),
+    count: posts.length,
+    source: source === 'live' && localPosts.length ? 'blogger+local' : source,
+  });
+  console.log(`Wrote data/posts.json (${posts.length} posts).`);
 
   await syncToKv(posts);
 

@@ -51,6 +51,48 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://imrankhanblog.netlify.app/blog/textile-circular-knitting-machine-sourcing-bangladesh</loc>
+        <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/বাংলাদেশের-রেল-খাতে-নতুন-যুগ-চালু-হচ্ছে-প্রথম-বৈদ্যুতিক-ট্রেন</loc>
+        <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/সন্ত্রাসীর-ধর্ম-আছে-কিন্তু-সন্ত্রাসবাদের-কি-কোনো-ধর্ম-আছে</loc>
+        <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/রিয়েল-এস্টেটে-বিনিয়োগ-করবেন-আগে-নিশ্চিত-হোন-আপনি-সঠিক-জায়গায়-বিনিয়োগ-করছেন</loc>
+        <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/বেতন-শুধু-একটি-salary-নয়</loc>
+        <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/বিদ্যুৎ-ও-গ্যাস-সংকট-আগামী-দুই-বছরেও-কি-সমাধান-হবে-না</loc>
+        <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/সবচেয়ে-মূল্যবান-asset-জমি-নয়-investor-এর-আস্থা</loc>
+        <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://imrankhanblog.netlify.app/blog/তরুণদের-উদ্যোক্তা-হওয়ার-নতুন-সুযোগ-১০-লাখ-টাকা-পর্যন্ত-জামানতবিহীন-ঋণ</loc>
         <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -219,7 +261,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://imrankhanblog.netlify.app/blog/category/career-leadership</loc>
+    <loc>https://imrankhanblog.netlify.app/blog/category/business-strategy</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/category/hr-recruitment</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -234,7 +281,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://imrankhanblog.netlify.app/blog/category/business-strategy</loc>
+    <loc>https://imrankhanblog.netlify.app/blog/category/career-leadership</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
