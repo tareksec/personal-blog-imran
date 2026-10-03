@@ -51,8 +51,56 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://imrankhanblog.netlify.app/blog/top-technology-machinery-trends-modern-textile-industry</loc>
+        <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/lessons-learned-optimizing-b2b-heavy-machinery-website-seo</loc>
+        <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/how-digital-platforms-revolutionizing-textile-machinery-sourcing-bangladesh</loc>
+        <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/যোগ্যতা-আপনাকে-সুযোগ-এনে-দিতে-পারে-কিন্তু-ভালো-আচরণ-আপনাকে-মানুষের-মনে-জায়গা-কর</loc>
+        <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/সবসময়-জীবন-আপনাকে-ভেঙে-দেয়-না-কখনো-কখনো-নিজের-চিন্তাই-আপনাকে-ভেতর-থেকে-শেষ-করে</loc>
+        <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/৮০-র-দশকে-যারা-জমি-কিনেছিলেন-আজ-তাদের-জমির-মূল্য-কোথায়</loc>
+        <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/ছবির-গল্প-শুধু-রাজনীতিতে-নয়-corporate-life-এও-আছে</loc>
+        <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/মাত্র-৩-৫-লক্ষ-টাকা-থেকে-সম্ভাব্য-দ্বিগুণ-রিটার্নের-সুযোগ</loc>
+        <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://imrankhanblog.netlify.app/blog/textile-circular-knitting-machine-sourcing-bangladesh</loc>
-        <lastmod>2026-09-19</lastmod>
+        <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -266,12 +314,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://imrankhanblog.netlify.app/blog/category/hr-recruitment</loc>
-        <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://imrankhanblog.netlify.app/blog/category/global-issues</loc>
+    <loc>https://imrankhanblog.netlify.app/blog/category/professional-etiquette</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -286,7 +329,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://imrankhanblog.netlify.app/blog/category/professional-etiquette</loc>
+    <loc>https://imrankhanblog.netlify.app/blog/category/hr-recruitment</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imrankhanblog.netlify.app/blog/category/global-issues</loc>
         <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
